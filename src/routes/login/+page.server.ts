@@ -6,12 +6,16 @@ import * as auth from '$lib/server/auth';
 import { db } from '$lib/server/db';
 import * as table from '$lib/server/db/schema';
 import type { Actions, PageServerLoad } from './$types';
+import type { User } from '$lib/server/db/schema';
 
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
-		return redirect(302, '/');
+			return redirect(302, '/');
 	}
-	return {};
+	const users  = await db.selectDistinct().from(table.user).limit(1) as User[]
+	return {
+		noUser: users.length === 0
+	};
 };
 
 export const actions: Actions = {
@@ -51,6 +55,10 @@ export const actions: Actions = {
 		return redirect(302, '/');
 	},
 	register: async (event) => {
+		if(await db.selectDistinct().from(table.user).limit(1)) {
+			return fail(400, { message: 'Only the Admin can create User' });
+		}
+
 		const formData = await event.request.formData();
 		const username = formData.get('username');
 		const password = formData.get('password');
@@ -78,6 +86,7 @@ export const actions: Actions = {
 			const session = await auth.createSession(sessionToken, userId);
 			auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
 		} catch (e) {
+			console.error(e)
 			return fail(500, { message: 'An error has occurred' });
 		}
 		return redirect(302, '/');

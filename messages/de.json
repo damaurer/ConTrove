@@ -1,4 +1,10 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from de!"
+	"hello_world": "Hello, {name} from de!",
+	"flag_de": "Deutsch",
+	"flag_en": "Englisch",
+	"login_username": "Benutzername",
+	"login_register": "Registrieren",
+	"login_login": "Anmelden",
+	"login_password": "Passwort"
 }
