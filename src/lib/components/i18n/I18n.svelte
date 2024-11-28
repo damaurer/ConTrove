@@ -22,7 +22,7 @@
 
 </script>
 
-<div class="reduced-select">
+<div class="language-select">
 	<Select.Root type="single" name="language" bind:value >
 		<Select.Trigger class="w-[180px]">
 			<img src={flags[value]} alt="Flag">

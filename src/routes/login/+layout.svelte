@@ -21,8 +21,10 @@
 
 	.top-corner {
 			position: absolute;
-      top: 0;
-      right: 0;
+      top: 1rem;
+      right: 1rem;
 			z-index: 1;
+			display: flex;
+			flex-direction: row;
 	}
 </style>

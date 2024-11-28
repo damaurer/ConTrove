@@ -1,0 +1,13 @@
+.language-select > button{
+    background-color: transparent;
+    border: none;
+    width: auto;
+    :focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    > svg {
+        color: #ffffff;
+    }
+}
