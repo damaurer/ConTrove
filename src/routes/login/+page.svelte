@@ -2,6 +2,8 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData, PageData } from './$types';
 	import * as m from '$lib/paraglide/messages.js'
+	import { Input } from '$lib/components/ui/input';
+	import { Button } from '$lib/components/ui/button';
 
 	let { form, data }: { form: ActionData, data: PageData } = $props();
 
@@ -18,16 +20,16 @@
 		<form method="post" action="?/login" use:enhance>
 			<label>
 				{m.login_username()}
-				<input name="username" />
+				<Input name="username" />
 			</label>
 			<label>
 				{m.login_password()}
-				<input type="password" name="password" />
+				<Input type="password" name="password" />
 			</label>
 			{#if data.noUser}
-				<button formaction="?/register">{m.login_register()}</button>
+				<Button formaction="?/register">{m.login_register()}</Button>
 			{:else }
-				<button>{m.login_register()}</button>
+				<Button>{m.login_register()}</Button>
 			{/if}
 		</form>
 	</div>
@@ -70,6 +72,11 @@
         justify-content: center;
         color: #fff;
 
+				h1 {
+						font-size: 40px;
+						margin-bottom: 2rem;
+				}
+
         label {
             display: flex;
             flex-direction: column;
@@ -78,6 +85,10 @@
         form {
             display: flex;
             flex-direction: column;
+
+						> * {
+								margin-bottom: 1rem;
+						}
         }
     }
 
@@ -104,7 +115,7 @@
 
         .bh-backdrop {
             width: 100vw;
-            height: 100vh;
+            height: 100%;
         }
 
         .bh-shadow {
@@ -120,27 +131,27 @@
         }
 
         .bh-photon-ring {
-            width: 35vw;
-            height: 35vw;
+            width: 75vw;
+            height: 75vw;
         }
 
         .bh-accretion {
-            width: 30vw;
-            height: 30vw;
+            width: 70vw;
+            height: 70vw;
         }
 
         .bh-backdrop {
             width: 100vw;
-            height: 100vh;
+            height: 100%;
         }
 
         .bh-shadow {
-            width: 20vw;
-            height: 20vw;
+            width: 60vw;
+            height: 60vw;
         }
     }
 
-    @media only screen and (min-width: 1200px) {
+    @media only screen and (min-width: 1440px) {
         .bh-doppler {
             width: 40vw;
             height: 40vw;
