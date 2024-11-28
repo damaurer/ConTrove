@@ -49,8 +49,10 @@
 		href = undefined,
 		type = "button",
 		children,
+		formaction,
 		...restProps
-	}: ButtonProps = $props();
+	}: ButtonProps | {formaction: string} = $props();
+
 </script>
 
 {#if href}
@@ -66,6 +68,7 @@
 	<button
 		bind:this={ref}
 		class={cn(buttonVariants({ variant, size, className }))}
+		formaction={formaction}
 		{type}
 		{...restProps}
 	>

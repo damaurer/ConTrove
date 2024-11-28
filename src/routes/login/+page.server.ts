@@ -55,7 +55,8 @@ export const actions: Actions = {
 		return redirect(302, '/');
 	},
 	register: async (event) => {
-		if(await db.selectDistinct().from(table.user).limit(1)) {
+		const users = await db.selectDistinct().from(table.user).limit(1) as User[]
+		if(users.length > 0) {
 			return fail(400, { message: 'Only the Admin can create User' });
 		}
 

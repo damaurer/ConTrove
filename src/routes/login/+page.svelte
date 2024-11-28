@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { ActionData, PageData } from './$types';
-	import * as m from '$lib/paraglide/messages.js'
+	import * as m from '$lib/paraglide/messages.js';
 	import { Input } from '$lib/components/ui/input';
 	import { Button } from '$lib/components/ui/button';
 
 	let { form, data }: { form: ActionData, data: PageData } = $props();
 
+	console.log(form, form?.message, data);
 </script>
 
 <div class="bh-container">
@@ -17,7 +18,8 @@
 	<div class="bh-shadow"></div>
 	<div class="login-container">
 		<h1>ConTrove</h1>
-		<form method="post" action="?/login" use:enhance>
+		<form method="post" action="?/login">
+			<p style="color: red">{form?.message ?? ''}</p>
 			<label>
 				{m.login_username()}
 				<Input name="username" />
@@ -27,14 +29,11 @@
 				<Input type="password" name="password" />
 			</label>
 			{#if data.noUser}
-				<Button formaction="?/register">{m.login_register()}</Button>
+				<Button formaction="?/register" type="submit">{m.login_register()}</Button>
 			{:else }
-				<Button>{m.login_register()}</Button>
+				<Button type="submit">{m.login_login()}</Button>
 			{/if}
 		</form>
-	</div>
-	<div class="error-container">
-		<p style="color: red">{form?.message ?? ''}</p>
 	</div>
 </div>
 
@@ -72,10 +71,10 @@
         justify-content: center;
         color: #fff;
 
-				h1 {
-						font-size: 40px;
-						margin-bottom: 2rem;
-				}
+        h1 {
+            font-size: 40px;
+            margin-bottom: 2rem;
+        }
 
         label {
             display: flex;
@@ -86,9 +85,9 @@
             display: flex;
             flex-direction: column;
 
-						> * {
-								margin-bottom: 1rem;
-						}
+            > * {
+                margin-bottom: 1rem;
+            }
         }
     }
 
