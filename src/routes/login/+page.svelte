@@ -7,7 +7,6 @@
 
 	let { form, data }: { form: ActionData, data: PageData } = $props();
 
-	console.log(form, form?.message, data);
 </script>
 
 <div class="bh-container">

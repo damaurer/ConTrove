@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import AppSidebar from '$lib/components/appsidebar/AppSidebar.svelte';
-	import AppHeader from '$lib/components/appheader/AppHeader.svelte';
 
 	let { children } = $props();
 </script>
@@ -9,9 +8,9 @@
 
 <Sidebar.Provider>
 	<AppSidebar />
+	<Sidebar.Trigger class="ml-1 mt-1" />
 	<Sidebar.Inset>
-		<AppHeader/>
-		<main class="m-10">
+		<main class="ml-5 mt-10 mr-10">
 			{@render children()}
 		</main>
 	</Sidebar.Inset>
