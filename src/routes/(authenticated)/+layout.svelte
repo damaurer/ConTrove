@@ -1,30 +1,23 @@
 <script lang="ts">
-	import I18n from '$lib/components/i18n/I18n.svelte';
-	import Modetoggle from '$lib/components/modetoggle/Modetoggle.svelte';
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import AppSidebar from '$lib/components/appsidebar/AppSidebar.svelte';
+	import AppHeader from '$lib/components/appheader/AppHeader.svelte';
 
 	let { children } = $props();
 </script>
 
 
-	{@render children()}
-
-<div class="top-corner">
-	<Modetoggle />
-	<I18n></I18n>
-</div>
+<Sidebar.Provider>
+	<AppSidebar />
+	<Sidebar.Inset>
+		<AppHeader/>
+		<main class="m-10">
+			{@render children()}
+		</main>
+	</Sidebar.Inset>
+</Sidebar.Provider>
 
 
 <style>
-	:global(body) {
-			position: relative;
-	}
 
-	.top-corner {
-			position: absolute;
-      top: 1rem;
-      right: 1rem;
-			z-index: 1;
-			display: flex;
-			flex-direction: row;
-	}
 </style>
