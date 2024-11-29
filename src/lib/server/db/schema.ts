@@ -1,7 +1,5 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
-import { primaryKey, timestamp } from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm';
-
+import { primaryKey } from 'drizzle-orm/pg-core';
 export const user = sqliteTable('user', {
 	id: text('id').primaryKey(),
 	username: text('username').notNull().unique(),
@@ -20,20 +18,11 @@ export const session = sqliteTable('session', {
 
 export type Session = typeof session.$inferSelect;
 
-export const userReleation = relations(user, ({many}) => ({
-	roleToUser: many(roleToUser)
-}))
-
-
 export const role = sqliteTable('role', {
 	name: text('name').primaryKey()
 });
 
 export type Role = typeof role.$inferSelect;
-
-export const roleRelation = relations(role, ({many}) => ({
-	roleToUser: many(roleToUser)
-}))
 
 export const roleToUser = sqliteTable('role_to_user', {
 	userId: text('user_id').notNull().references(() => user.id),
@@ -44,14 +33,3 @@ export const roleToUser = sqliteTable('role_to_user', {
 
 export type RoleToUser = typeof roleToUser.$inferSelect;
 
-export const roleToUserRelation = relations(roleToUser, ({ one }) => ({
-	user: one(user, {
-		fields: [roleToUser.userId],
-		references: [user.id]
-	}),
-	role:
-		one(role, {
-			field: [roleToUser.roleName],
-			references: [role.name]
-		})
-}));
