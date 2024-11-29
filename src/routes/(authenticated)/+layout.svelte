@@ -6,7 +6,7 @@
 </script>
 
 
-{@render children()}
+	{@render children()}
 
 <div class="top-corner">
 	<Modetoggle />
@@ -23,7 +23,7 @@
 			position: absolute;
       top: 1rem;
       right: 1rem;
-			z-index: 4;
+			z-index: 1;
 			display: flex;
 			flex-direction: row;
 	}

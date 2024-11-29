@@ -16,6 +16,7 @@
 	<div class="bh-accretion"></div>
 	<div class="bh-backdrop"></div>
 	<div class="bh-shadow"></div>
+	<div class="bh-controve"></div>
 	<div class="login-container">
 		<h1>ConTrove</h1>
 		<form method="post" action="?/login">
@@ -47,19 +48,6 @@
         --photon: #00e8ff;
         --accretion: #bc00f3;
         --doppler: #5b3cf5;
-    }
-
-    .error-container {
-        grid-area: bh-shadow;
-        color: red;
-        z-index: 6;
-        align-self: start;
-        position: relative;
-
-        p {
-            position: absolute;
-            top: 10vh;
-        }
     }
 
     .login-container {
@@ -121,6 +109,11 @@
             width: 90vw;
             height: 90vw;
         }
+
+        .bh-controve {
+            width: 93vw;
+            height: 93vw;
+        }
     }
 
     @media only screen and (min-width: 768px) {
@@ -148,6 +141,11 @@
             width: 60vw;
             height: 60vw;
         }
+
+        .bh-controve {
+            width: 62vw;
+            height: 62vw;
+        }
     }
 
     @media only screen and (min-width: 1440px) {
@@ -174,6 +172,11 @@
         .bh-shadow {
             width: 20vw;
             height: 20vw;
+        }
+
+        .bh-controve {
+            width: 21vw;
+            height: 21vw;
         }
     }
 
@@ -299,8 +302,15 @@
         z-index: 4;
     }
 
+    .bh-controve {
+        grid-area: bh-shadow;
+        background-image: url("/ConTrove_vanilla.svg");
+        background-position: center;
+        z-index: 6;
+    }
+
     .bh-shadow {
-        background: black;
+        background-color: #000000;
         display: flex;
         border-radius: 100%;
         grid-area: bh-shadow;
@@ -329,5 +339,16 @@
         100% {
             transform: rotate(180deg)
         }
+
+    }
+
+    .bh-shadow {
+						animation: multicolor 5s infinite;
+    }
+
+		@keyframes multicolor {
+        0%   {background-color: rgb(22 219 252);}
+        50%  {background-color: rgb(61 148 241);}
+        100% {background-color: rgb(22 219 252);}
     }
 </style>

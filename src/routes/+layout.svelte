@@ -8,7 +8,9 @@
 
 <ModeWatcher />
 <ParaglideJS {i18n}>
+	<div class="z-0 block relative">
 	{@render children()}
+	</div>
 </ParaglideJS>
 
 <style>
