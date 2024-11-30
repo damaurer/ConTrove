@@ -5,6 +5,7 @@
 	import Search from 'lucide-svelte/icons/search';
 	import Settings from 'lucide-svelte/icons/settings';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import AppSidebarFooter from '$lib/components/appsidebar/AppSidebarFooter.svelte';
 
 	// Menu items.
 	const items = [
@@ -60,4 +61,7 @@
 			</Sidebar.GroupContent>
 		</Sidebar.Group>
 	</Sidebar.Content>
+	<Sidebar.Footer>
+		<AppSidebarFooter/>
+	</Sidebar.Footer>
 </Sidebar.Root>
